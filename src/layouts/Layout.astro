@@ -1,23 +1,223 @@
+---
+const pageTitle = 'Diseño web en Bolivia para conseguir más clientes | Nexcore';
+const pageDescription = 'Creamos páginas web, tiendas online y sistemas a medida para negocios en Bolivia. Diseño profesional, SEO inicial y contacto directo con Nexcore.';
+const pageUrl = 'https://nexcoredev.tech/';
+const socialImage = 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85';
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Nexcore',
+  url: pageUrl,
+  logo: 'https://nexcoredev.tech/favicon.svg',
+  description: pageDescription,
+  email: 'nexcorew@gmail.com',
+  telephone: '+59169436988',
+  areaServed: { '@type': 'Country', name: 'Bolivia' },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+59169436988',
+    email: 'nexcorew@gmail.com',
+    contactType: 'customer service',
+    availableLanguage: 'Spanish',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios digitales para negocios',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Diseño y desarrollo de páginas web' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sistemas web a medida' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Tiendas online' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Automatización de procesos' } },
+    ],
+  },
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Nexcore',
+  url: pageUrl,
+  inLanguage: 'es-BO',
+};
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content={pageDescription}
+    />
+    <meta name="author" content="Nexcore" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0B0F19" />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_BO" />
+    <meta property="og:site_name" content="Nexcore" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Profesionales colaborando alrededor de una computadora" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={socialImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script is:inline>
+      const storedTheme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+    </script>
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  :root {
+    color-scheme: dark;
+    --bg: #0b0f19;
+    --surface: #111827;
+    --surface-elevated: #161d2b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #63a5f1;
+    --accent-2: #5c92f6;
+    --ambient-one: rgba(81, 160, 220, 0.3);
+    --ambient-two: rgba(83, 205, 190, 0.22);
+    --grid-line: rgba(147, 197, 253, 0.19);
+    --ambient-opacity: 0.96;
+    --glass-nav: rgba(12, 24, 35, 0.68);
+    --glass-panel: rgba(19, 34, 48, 0.58);
+    --glass-panel-strong: rgba(20, 35, 50, 0.78);
+    --glass-border: rgba(220, 240, 255, 0.15);
+    --glass-highlight: rgba(255, 255, 255, 0.2);
+    --glass-shadow: rgba(0, 0, 0, 0.22);
+    --glass-accent: rgba(72, 157, 218, 0.2);
+    --glass-accent-border: rgba(129, 198, 246, 0.38);
+    --glass-preview: linear-gradient(140deg, rgba(91, 174, 231, 0.26), rgba(92, 133, 246, 0.14));
+  }
+
+  :root[data-theme='light'] {
+    color-scheme: light;
+    --bg: #edf4f7;
+    --surface: #f8fbfc;
+    --surface-elevated: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent: #469de5;
+    --accent-2: #3a82ed;
+    --ambient-one: rgba(83, 173, 224, 0.3);
+    --ambient-two: rgba(73, 195, 164, 0.22);
+    --grid-line: rgba(43, 91, 118, 0.15);
+    --ambient-opacity: 0.9;
+    --glass-nav: rgba(255, 255, 255, 0.66);
+    --glass-panel: rgba(255, 255, 255, 0.54);
+    --glass-panel-strong: rgba(255, 255, 255, 0.76);
+    --glass-border: rgba(45, 80, 105, 0.14);
+    --glass-highlight: rgba(255, 255, 255, 0.86);
+    --glass-shadow: rgba(54, 95, 122, 0.12);
+    --glass-accent: rgba(70, 157, 229, 0.14);
+    --glass-accent-border: rgba(52, 131, 197, 0.28);
+    --glass-preview: linear-gradient(140deg, rgba(91, 174, 231, 0.2), rgba(76, 158, 151, 0.12));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: Inter, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    transition: background-color 360ms ease, color 360ms ease;
+  }
+
+  body::before,
+  body::after {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    content: '';
+    pointer-events: none;
+  }
+
+  body::before {
+    background:
+      linear-gradient(118deg, transparent 12%, var(--ambient-one) 31%, transparent 53%),
+      linear-gradient(28deg, transparent 37%, var(--ambient-two) 53%, transparent 71%),
+      linear-gradient(155deg, transparent 54%, var(--ambient-one) 68%, transparent 84%);
+    background-size: 160% 160%;
+    filter: blur(24px);
+    opacity: var(--ambient-opacity);
+    animation: ambientDrift 18s ease-in-out infinite alternate;
+  }
+
+  body::after {
+    inset: 28% -25% -22%;
+    background-image:
+      repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 46px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 46px);
+    opacity: 0.62;
+    transform: perspective(900px) rotateX(58deg) scale(1.35);
+    transform-origin: center bottom;
+    mask-image: linear-gradient(to bottom, transparent, black 24%, black 76%, transparent);
+    animation: gridDrift 30s linear infinite;
+  }
+
+  .page-shell,
+  .footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes ambientDrift {
+    0% {
+      background-position: 0% 40%;
+      transform: translate3d(-2%, -1%, 0) scale(1.02);
+    }
+    100% {
+      background-position: 100% 60%;
+      transform: translate3d(2%, 1%, 0) scale(1.08);
+    }
+  }
+
+  @keyframes gridDrift {
+    from {
+      background-position: 0 0, 0 0;
+    }
+    to {
+      background-position: 0 92px, 92px 0;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after {
+      animation: none;
+    }
+  }
 </style>
